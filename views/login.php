@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,6 +30,7 @@
 
     <!-- Template Stylesheet -->
     <link href="<?php echo BASE_URL; ?>assets/css/style.css" rel="stylesheet">
+    <link href="<?php echo BASE_URL; ?>assets/css/login.css" rel="stylesheet">
 </head>
 
 <body>
@@ -46,12 +48,14 @@
         <div class="container-fluid">
             <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
                 <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
-                    <div class="bg-secondary rounded p-4 p-sm-5 my-4 mx-3">
-                        <div class="d-flex align-items-center justify-content-between mb-3">
-                            <a href="index.html" class="">
-                                <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i> Sistema - Amira</h3>
+                    <div class="bg-secondary rounded p-4 p-sm-4 my-4 mx-4">
+                        <div class="d-flex justify-content-center  mb-3">
+                            <a href="index.html" class="text-decoration-none">
+                                <h3 class="text-primary">
+                                    <i class="fa fa-user-edit me-2"></i> Sistema - Amira
+                                </h3>
                             </a>
-                            <h3>Iniciar sesión</h3>
+                            <!-- <h3>Iniciar sesión</h3> -->
                         </div>
 
                         <div class="form-body">
@@ -63,12 +67,13 @@
                                     <input type="email" class="form-control" id="correo" name="correo" placeholder="Correo electrónico">
                                     <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                                 </div>
+                                <span id="errorCorreo" class="text-danger mb-3"></span>
 
                                 <!-- ESPACIO PARA EL PASSWORD -->
 
-                                <div class="input-group mb-4" id="show_hide_password">
+                                <div class="input-group mb-3" id="show_hide_password">
                                     <!-- Input de contraseña -->
-                                    <input type="password" class="form-control" id="clave" name="clave" value="carrizo" placeholder="Password">
+                                    <input type="password" class="form-control" id="clave" name="clave" value="admin" placeholder="Password">
                                     <!-- Ícono candado a la izquierda -->
                                     <span class="input-group-text">
                                         <i class="fas fa-lock"></i>
@@ -78,16 +83,17 @@
                                         <i class="fa fa-eye" aria-hidden="true"></i>
                                     </span>
                                 </div>
+                                <span id="errorClave" class="text-danger"></span>
 
-                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                <div class="d-flex align-items-center justify-content-between mb-3">
                                     <div class="form-check">
                                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                                        <label class="form-check-label" for="exampleCheck1">Recuerdame</label>
                                     </div>
                                     <a href="#">Has olvidado tu contraseña</a>
                                 </div>
 
-                                <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Iniciar sesión</button>
+                                <button type="submit" class="btn btn-primary py-2 w-100 mb-3">Iniciar sesión</button>
                             </form>
                         </div>
                     </div>
@@ -110,6 +116,9 @@
 
     <!-- Template Javascript -->
     <script src="<?php echo BASE_URL; ?>assets/js/main.js"></script>
+    <script> 
+        const base_url = '<?php echo BASE_URL; ?>';
+    </script>
     <script src="<?php echo BASE_URL; ?>assets/js/modules/login.js"></script>
 
     <!--Password show & hide js -->
