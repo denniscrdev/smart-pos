@@ -64,7 +64,7 @@
                                 <!-- ESPACIO PARA EL EMAIL -->
 
                                 <div class="input-group mb-3">
-                                    <input type="email" class="form-control" id="correo" name="correo" placeholder="Correo electrónico">
+                                    <input type="email" class="form-control" id="correo" name="correo" value="coloresbeautye@gmail.com" placeholder="Correo electrónico">
                                     <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                                 </div>
                                 <span id="errorCorreo" class="text-danger mb-3"></span>
@@ -116,6 +116,8 @@
 
     <!-- Template Javascript -->
     <script src="<?php echo BASE_URL; ?>assets/js/main.js"></script>
+    <!-- plugins -->
+    <script src="<?php echo BASE_URL; ?>assets/js/sweetalert2.all.min.js"></script>
     <script> 
         const base_url = '<?php echo BASE_URL; ?>';
     </script>

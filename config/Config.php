@@ -7,6 +7,4 @@ define('DBNAME', 'carrizo');
 define('CHARSET', '');
 define('TITLE', 'SIS. Amira');
 
-
-
 ?>
