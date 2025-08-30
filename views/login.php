@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,6 +26,8 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="<?php echo BASE_URL; ?>assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- plugins -->
+    <link href="<?php echo BASE_URL; ?>assets/css/plugins/material-preloader.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
     <link href="<?php echo BASE_URL; ?>assets/css/style.css" rel="stylesheet">
@@ -70,20 +71,22 @@
                                 <span id="errorCorreo" class="text-danger mb-3"></span>
 
                                 <!-- ESPACIO PARA EL PASSWORD -->
-
                                 <div class="input-group mb-3" id="show_hide_password">
                                     <!-- Input de contraseña -->
                                     <input type="password" class="form-control" id="clave" name="clave" value="admin" placeholder="Password">
+
                                     <!-- Ícono candado a la izquierda -->
                                     <span class="input-group-text">
                                         <i class="fas fa-lock"></i>
                                     </span>
+
                                     <!-- Ícono ojo a la derecha -->
                                     <span class="input-group-text" style="cursor:pointer;" id="togglePassword">
                                         <i class="fa fa-eye" aria-hidden="true"></i>
                                     </span>
                                 </div>
-                                <span id="errorClave" class="text-danger"></span>
+                                <span id="errorClave" class="text-danger mt-0"></span>
+
 
                                 <div class="d-flex align-items-center justify-content-between mb-3">
                                     <div class="form-check">
@@ -116,29 +119,15 @@
 
     <!-- Template Javascript -->
     <script src="<?php echo BASE_URL; ?>assets/js/main.js"></script>
+    <script src="<?php echo BASE_URL; ?>assets/js/funciones.js"></script>
     <!-- plugins -->
-    <script src="<?php echo BASE_URL; ?>assets/js/sweetalert2.all.min.js"></script>
-    <script> 
+    <script src="<?php echo BASE_URL; ?>assets/js/plugins/sweetalert2.all.min.js"></script>
+    <script src="<?php echo BASE_URL; ?>assets/js/plugins/material-preloader.js"></script>
+    <script>
         const base_url = '<?php echo BASE_URL; ?>';
     </script>
     <script src="<?php echo BASE_URL; ?>assets/js/modules/login.js"></script>
 
-    <!--Password show & hide js -->
-    <script>
-        $(document).ready(function() {
-            $('#togglePassword').on('click', function() {
-                const input = $('#clave');
-                const icon = $(this).find('i');
-                if (input.attr('type') === 'password') {
-                    input.attr('type', 'text');
-                    icon.removeClass('fa-eye').addClass('fa-eye-slash');
-                } else {
-                    input.attr('type', 'password');
-                    icon.removeClass('fa-eye-slash').addClass('fa-eye');
-                }
-            });
-        });
-    </script>
 </body>
 
 </html>

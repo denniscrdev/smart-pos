@@ -3,7 +3,7 @@
 require_once 'config/Config.php';
 require_once 'config/Helpers.php';
 
-$ruta = (!empty($_GET['url'])) ? $_GET['url'] : 'home/index';
+$ruta = (!empty($_GET['url'])) ? $_GET['url'] : 'portal/index';
 $array = explode('/', $ruta);
 $controller = ucfirst($array[0]);
 $metodo = 'index';

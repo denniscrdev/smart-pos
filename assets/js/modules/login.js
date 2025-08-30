@@ -1,96 +1,88 @@
-// Seleccionamos el formulario y los inputs por su ID
+// ==============================
+// SELECCIÓN DE ELEMENTOS DEL DOM
+// ==============================
 const formulario = document.querySelector("#formulario");
 const correo = document.querySelector("#correo");
 const clave = document.querySelector("#clave");
-
-// Seleccionamos los contenedores de errores
 const errorCorreo = document.querySelector("#errorCorreo");
 const errorClave = document.querySelector("#errorClave");
 
-// Esperamos que todo el DOM esté cargado
+// ==============================
+// INICIO DEL SCRIPT
+// ==============================
 document.addEventListener("DOMContentLoaded", function () {
+    formulario.addEventListener("submit", function (e) {
+        e.preventDefault();
 
-  // Escuchamos el evento "submit" del formulario
-  formulario.addEventListener("submit", function (e) {
-    e.preventDefault(); // Evita que se recargue la página automáticamente
+        // Limpiamos errores previos
+        errorCorreo.textContent = "";
+        errorClave.textContent = "";
 
-    // Limpiamos los mensajes de error anteriores
-    errorCorreo.textContent = "";
-    errorClave.textContent = "";
+        // Validaciones
+        if(correo.value.trim() == ""){
+            errorCorreo.textContent = "EL CORREO ES REQUERIDO";
+        } else if(clave.value.trim() == ""){
+            errorClave.textContent = "LA CONTRASEÑA ES REQUERIDA";
+        } else {
+            const url = base_url + "home/validar";
+            const data = new FormData(this);
+            const http = new XMLHttpRequest();
+            http.open("POST", url, true);
 
-    // Validamos que el campo correo no esté vacío
-    if (correo.value == "") {
-      errorCorreo.textContent = "EL CORREO ES REQUERIDO";
+            // ==============================
+            // <<<=== PARTE EDITADA: activamos precarga antes de enviar
+            // ==============================
+            fncMatPreloader("on");
 
-      // Validamos que el campo contraseña no esté vacío
-    } else if (clave.value == "") {
-      errorClave.textContent = "LA CONTRASEÑA ES REQUERIDA";
+            http.send(data);
 
-    } else {
-      // Definimos la URL para enviar los datos
-      const url = base_url + "home/validar";
+            http.onreadystatechange = function () {
+                if(this.readyState == 4 && this.status == 200){
+                    const res = JSON.parse(this.responseText);
 
-      // Creamos un objeto FormData con los datos del formulario
-      const data = new FormData(this);
+                    // ==============================
+                    // <<<=== PARTE EDITADA: preloader visible mínimo 2 segundos
+                    // ==============================
+                    setTimeout(() => {
+                        fncMatPreloader("off"); // quita la barra de precarga
 
-      // Instanciamos un objeto XMLHttpRequest
-      const http = new XMLHttpRequest();
+                        // Mostramos alerta
+                        Swal.fire({
+                            title: "mensaje",
+                            text: res.msg,
+                            icon: res.type
+                        });
 
-      // Abrimos la conexión con método POST y URL destino
-      http.open("POST", url, true);
+                        // Si login es correcto
+                        if(res.type == 'success'){
+                            setTimeout(() => {
+                                let timerInterval;
+                                Swal.fire({
+                                    title: res.msg,
+                                    html: "Será redireccionado en <b></b> milliseconds.",
+                                    timer: 2000,
+                                    timerProgressBar: true,
+                                    didOpen: () => {
+                                        Swal.showLoading();
+                                        const timer = Swal.getPopup().querySelector("b");
+                                        timerInterval = setInterval(() => {
+                                            timer.textContent = `${Swal.getTimerLeft()}`;
+                                        }, 100);
+                                    },
+                                    willClose: () => {
+                                        clearInterval(timerInterval);
+                                    }
+                                }).then((result) => {
+                                    if(result.dismiss === Swal.DismissReason.timer){
+                                        window.location = base_url + 'admin';
+                                    }
+                                });
+                            }, 2000);
+                        }
 
-      // Enviamos los datos al servidor
-      http.send(data);
-
-      // Escuchamos cambios en el estado de la petición
-      http.onreadystatechange = function () {
-        // Verificamos que la petición esté lista y haya tenido éxito
-        if (this.readyState == 4 && this.status == 200) {
-
-          // Convertimos la respuesta en objeto JSON
-          const res = JSON.parse(this.responseText);
-          Swal.fire({
-            title: "mensaje",
-            text: res.msg,
-            icon: res.type
-          });
-          if (res.type == 'success') {
-
-            setTimeout(() => {
-              let timerInterval;
-              Swal.fire({
-                title: res.msg,
-                html: "sera redireccionado en <b></b> milliseconds.",
-                timer: 2000,
-                timerProgressBar: true,
-                didOpen: () => {
-                  Swal.showLoading();
-                  const timer = Swal.getPopup().querySelector("b");
-                  timerInterval = setInterval(() => {
-                    timer.textContent = `${Swal.getTimerLeft()}`;
-                  }, 100);
-                },
-                willClose: () => {
-                  clearInterval(timerInterval);
+                    }, 2000); // <<<=== fuerza que precarga dure al menos 2 segundos
                 }
-              }).then((result) => {
-                /* Read more about handling dismissals below */
-                if (result.dismiss === Swal.DismissReason.timer) {
-                  window.location = base_url + 'admin';
-                }
-              });
-            }, 2000);
-
-
-          }
-
+            };
         }
-      };
-    }
-  });
+    });
 });
-
-
-
-
-
