@@ -45,38 +45,38 @@ document.addEventListener('DOMContentLoaded', function () {
         order: [[0, 'asc']],
     });
     //Limpiar Campos
-    // btnNuevo.addEventListener('click', function () {
-    //     limpiarCampos();
-    // })
+    btnNuevo.addEventListener('click', function () {
+        limpiarCampos();
+    })
     //registrar usuarios
-    // formulario.addEventListener('submit', function (e) {
-    //     e.preventDefault();
-    //     errorNombre.textContent = '';
-    //     errorApellido.textContent = '';
-    //     errorCorreo.textContent = '';
-    //     errorTelefono.textContent = '';
-    //     errorDireccion.textContent = '';
-    //     errorClave.textContent = '';
-    //     errorRol.textContent = '';
-    //     if (nombres.value == '') {
-    //         errorNombre.textContent = 'EL NOMBRE ES REQUERIDO';
-    //     } else if (apellidos.value == '') {
-    //         errorApellido.textContent = 'EL APELLIDO ES REQUERIDO';
-    //     } else if (correo.value == '') {
-    //         errorCorreo.textContent = 'EL CORREO ES REQUERIDO';
-    //     } else if (telefono.value == '') {
-    //         errorTelefono.textContent = 'EL TELEFONO ES REQUERIDO';
-    //     } else if (direccion.value == '') {
-    //         errorDireccion.textContent = 'LA DIRECCION ES REQUERIDO';
-    //     } else if (clave.value == '') {
-    //         errorClave.textContent = 'LA CONTRASEÑA ES REQUERIDO';
-    //     } else if (rol.value == '') {
-    //         errorRol.textContent = 'EL ROL ES REQUERIDO';
-    //     } else {
-    //         const url = base_url + 'usuarios/registrar';
-    //         insertarRegistros(url, this, tblUsuarios, btnAccion, true);
-    //     }
-    // })
+    formulario.addEventListener('submit', function (e) {
+        e.preventDefault();
+        errorNombre.textContent = '';
+        errorApellido.textContent = '';
+        errorCorreo.textContent = '';
+        errorTelefono.textContent = '';
+        errorDireccion.textContent = '';
+        errorClave.textContent = '';
+        errorRol.textContent = '';
+        if (nombres.value == '') {
+            errorNombre.textContent = 'EL NOMBRE ES REQUERIDO';
+        } else if (apellidos.value == '') {
+            errorApellido.textContent = 'EL APELLIDO ES REQUERIDO';
+        } else if (correo.value == '') {
+            errorCorreo.textContent = 'EL CORREO ES REQUERIDO';
+        } else if (telefono.value == '') {
+            errorTelefono.textContent = 'EL TELEFONO ES REQUERIDO';
+        } else if (direccion.value == '') {
+            errorDireccion.textContent = 'LA DIRECCION ES REQUERIDO';
+        } else if (clave.value == '') {
+            errorClave.textContent = 'LA CONTRASEÑA ES REQUERIDO';
+        } else if (rol.value == '') {
+            errorRol.textContent = 'EL ROL ES REQUERIDO';
+        } else {
+            const url = base_url + 'usuarios/registrar';
+            insertarRegistros(url, this, tblUsuarios, btnAccion, true);
+        }
+    })
 
 })
 //function para elimnar usuario

@@ -47,7 +47,7 @@
                                                 <label for="nombre" class="form-label mb-2">Nombres</label>
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
-                                                    <input type="text" class="form-control" placeholder="ingrese su nombre" aria-label="Username" aria-describedby="basic-addon1">
+                                                    <input type="text" class="form-control" id="nombres" name="nombres" placeholder="ingrese su nombre" aria-label="Username" aria-describedby="basic-addon1">
                                                 </div>
                                                 <span id="errorNombre" class="text-danger"></span>
                                             </div>
@@ -55,48 +55,53 @@
                                                 <label for="nombre" class="form-label mb-2">Apelido</label>
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
-                                                    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                                    <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
                                                 </div>
+                                                <span id="errorApellido" class="text-danger"></span>
                                             </div>
                                             <div class="col-lg-4 col-sm-6">
                                                 <label for="nombre" class="form-label mb-2">Correo</label>
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
-                                                    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                                    <input type="email" class="form-control" id="correo" name="correo" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
                                                 </div>
+                                                <span id="errorCorreo" class="text-danger"></span>
                                             </div>
                                             <div class="col-lg-4 col-sm-6">
                                                 <label for="nombre" class="form-label mb-2">Telefono</label>
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
-                                                    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                                    <input type="number" class="form-control" id="telefono" name="telefono" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
                                                 </div>
+                                                <span id="errorTelefono" class="text-danger"></span>
                                             </div>
                                             <div class="col-lg-8 col-sm-6">
                                                 <label for="nombre" class="form-label mb-2">Dirección</label>
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
-                                                    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                                    <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
                                                 </div>
+                                                <span id="errorDireccion" class="text-danger"></span>
                                             </div>
                                             <div class="col-lg-4 col-sm-6">
                                                 <label for="nombre" class="form-label mb-2">Clave</label>
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
-                                                    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                                    <input type="password" class="form-control" id="clave" name="clave" class="form-control"placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
                                                 </div>
+                                                <span id="errorClave" class="text-danger"></span>
                                             </div>
                                             <div class="col-lg-4 col-sm-6">
                                                 <label for="nombre" class="form-label mb-2">Rol</label>
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text" id="basic-addon2"><i class="bi bi-person-fill"></i></span>
-                                                    <select class="form-select" aria-label="Example select with button addon">
-                                                        <option selected>Open this select menu</option>
-                                                        <option value="1">One</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option>
+                                                    <select class="form-select"  id="rol" name="rol" aria-label="Example select with button addon">
+                                                        <option value="" selected>Escoge un rol</option>
+                                                        <option value="1">Administrador</option>
+                                                        <option value="2">Vendedor</option>
                                                     </select>
                                                 </div>
+                                                <span id="errorRol" class="text-danger"></span>
                                             </div>
                                         </div>
                                         <div class="text-end">
