@@ -1,0 +1,21 @@
+/* Animaciones y hover para botones DataTables */
+.dt-btn-animated span.badge {
+    padding: 0.6em 0.8em;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Efecto hover: agrandar y sombra */
+.dt-btn-animated span.badge:hover {
+    transform: scale(1.2);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Iconos centrados */
+.dt-btn-animated i.fas {
+    font-size: 1.2em;
+}
+

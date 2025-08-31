@@ -26,9 +26,11 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="<?php echo BASE_URL; ?>assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo BASE_URL; ?>assets/DataTables/datatables.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
     <link href="<?php echo BASE_URL; ?>assets/css/style.css" rel="stylesheet">
+    <link href="<?php echo BASE_URL; ?>assets/css/tablas.css" rel="stylesheet">
 </head>
 
 <body>
