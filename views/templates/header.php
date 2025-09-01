@@ -63,13 +63,14 @@
                 <div class="navbar-nav w-100">
                     <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Mantenimiento</a>
-                        <div class="dropdown-menu bg-transparent border-0">
+                        <a href="#" class="nav-link dropdown-toggle small-text" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Administración</a>
+                        <div class="me-2 dropdown-menu bg-transparent border-0">
                             <a href="<?php echo BASE_URL . 'usuarios'; ?>" class="dropdown-item">
                                 <i class="fa fa-users me-2"></i> Usuarios
                             </a>
-                            <a href="typography.html" class="dropdown-item">Categorias</a>
-                            <a href="element.html" class="dropdown-item">Productos</a>
+                            <a href="<?php echo BASE_URL . 'admin'; ?>" class="dropdown-item">
+                                <i class="fa fa-cog me-2"></i> Configuración
+                            </a>                           
                         </div>
                     </div>
                     <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Clientes</a>

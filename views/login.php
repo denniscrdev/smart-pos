@@ -119,7 +119,7 @@
 
     <!-- Template Javascript -->
     <script src="<?php echo BASE_URL; ?>assets/js/main.js"></script>
-    <script src="<?php echo BASE_URL; ?>assets/js/funciones.js"></script>
+    <script src="<?php echo BASE_URL; ?>assets/js/funcioneslogin.js"></script>
     <!-- plugins -->
     <script src="<?php echo BASE_URL; ?>assets/js/plugins/sweetalert2.all.min.js"></script>
     <script src="<?php echo BASE_URL; ?>assets/js/plugins/material-preloader.js"></script>

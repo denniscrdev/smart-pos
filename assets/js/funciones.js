@@ -1,65 +1,139 @@
-// ==============================
-// HERRAMIENTA TOOLTIP (Dark Panel)
-// ==============================
-document.addEventListener("DOMContentLoaded", function () {
-    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-    tooltipTriggerList.map(function (tooltipTriggerEl) {
-        return new bootstrap.Tooltip(tooltipTriggerEl);
-    });
-});
+const firstTabEl = document.querySelector('#nav-tab button:last-child')
+const firstTab = new bootstrap.Tab(firstTabEl)
 
-// ==============================
-// FUNCIÓN DE PRECARGA
-// ==============================
-function fncMatPreloader(type){
-    var preloader = new $.materialPreloader({
-        position: 'top',
-        height: '5px',
-        col_1: '#159756',
-        col_2: '#da4733',
-        col_3: '#3b78e7',
-        col_4: '#fdba2c',
-        fadeIn: 200,
-        fadeOut: 200
-    });
-
-    if(type == "on"){
-        preloader.on(); // activa la barra de precarga
-    }
-
-    if(type == "off"){
-        $(".load-bar-container").remove(); // quita la barra de precarga
-    }
-}
-
-/*=============================================
-Mostrar / Ocultar Contraseña
-=============================================*/
-
-function fncTogglePassword() {
-    const input = document.querySelector("#clave");
-    const toggleBtn = document.querySelector("#togglePassword");
-
-    if (!input || !toggleBtn) return;
-
-    toggleBtn.addEventListener("click", function () {
-        const icon = this.querySelector("i");
-
-        if (input.type === "password") {
-            input.type = "text";
-            if (icon) {
-                icon.classList.remove("fa-eye");
-                icon.classList.add("fa-eye-slash");
-            }
-        } else {
-            input.type = "password";
-            if (icon) {
-                icon.classList.remove("fa-eye-slash");
-                icon.classList.add("fa-eye");
+function insertarRegistros(url, idFormulario, tbl, idButton, accion) {
+    //crear formData
+    const data = new FormData(idFormulario);
+    //hacer una instancia del objeto XMLHttpRequest 
+    const http = new XMLHttpRequest();
+    //Abrir una Conexion - POST - GET
+    http.open('POST', url, true);
+    //Enviar Datos
+    http.send(data);
+    //verificar estados
+    http.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            const res = JSON.parse(this.responseText);
+            Swal.fire({
+                toast: true,
+                position: 'top-right',
+                icon: res.type,
+                title: res.msg,
+                showConfirmButton: false,
+                timer: 2000
+            })
+            if (res.type == 'success') {
+                if (accion) {
+                    clave.removeAttribute('readonly');
+                }
+                if (tbl != null) {
+                    document.querySelector('#id').value = '';
+                    idButton.textContent = 'Registrar';
+                    idFormulario.reset();
+                    tbl.ajax.reload();
+                }
             }
         }
-    });
+    }
 }
 
-document.addEventListener("DOMContentLoaded", fncTogglePassword);
+function eliminarRegistros(url, tbl) {
+    Swal.fire({
+        title: 'Esta seguro de eliminar?',
+        text: "El registro no se eliminará de forma permanente, solo cambiará el estado!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, Eliminar!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            //hacer una instancia del objeto XMLHttpRequest 
+            const http = new XMLHttpRequest();
+            //Abrir una Conexion - POST - GET
+            http.open('GET', url, true);
+            //Enviar Datos
+            http.send();
+            //verificar estados
+            http.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    const res = JSON.parse(this.responseText);
+                    Swal.fire({
+                        toast: true,
+                        position: 'top-right',
+                        icon: res.type,
+                        title: res.msg,
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+                    if (res.type == 'success') {
+                        // Recargar tabla
+                        tbl.ajax.reload();
+                        // Luego redirigir a usuarios inactivos
+                        setTimeout(() => {
+                            window.location.href = base_url + 'usuarios/inactivos';
+                        }, 1000);
+                    }
+                }
+            }
+        }
+    })
+}
 
+function restaurarRegistros(url, tbl) {
+    Swal.fire({
+        title: 'Esta seguro de restaurar?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, Restaurar!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            //hacer una instancia del objeto XMLHttpRequest 
+            const http = new XMLHttpRequest();
+            //Abrir una Conexion - POST - GET
+            http.open('GET', url, true);
+            //Enviar Datos
+            http.send();
+            //verificar estados
+            http.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    const res = JSON.parse(this.responseText);
+                    Swal.fire({
+                        toast: true,
+                        position: 'top-right',
+                        icon: res.type,
+                        title: res.msg,
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+                    if (res.type == 'success') {
+                        // Recargar tabla actual
+                        tbl.ajax.reload();
+
+                        // 🔽 Decidir redirección según la acción
+                        setTimeout(() => {
+                            if (url.includes('eliminar')) {
+                                window.location.href = base_url + 'usuarios/inactivos';
+                            } else if (url.includes('restaurar')) {
+                                window.location.href = base_url + 'usuarios';
+                            }
+                        }, 1000);
+                    }
+                }
+            }
+        }
+    })
+}
+
+function alertaPersonalizada(type, msg) {
+    Swal.fire({
+        toast: true,
+        position: 'top-right',
+        icon: type,
+        title: msg,
+        showConfirmButton: false,
+        timer: 2000
+    })
+}

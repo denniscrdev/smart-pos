@@ -22,8 +22,8 @@ class Usuarios extends Controller
                 $data[$i]['rol'] = '<span class="badge bg-info">VENDEDOR</span>';
             }
             $data[$i]['acciones'] = '<div>
-            <button class="btn btn-danger" type="button" onclick="eliminarUsuario(' . $data[$i]['id'] . ')"><i class="fas fa-times-circle"></i></button>
-            <button class="btn btn-info" type="button" onclick="editarUsuario(' . $data[$i]['id'] . ')"><i class="fas fa-edit"></i></button>
+            <button class="btn btn-danger" data-bs-toggle="tooltip" title="Eliminar Registro" type="button" onclick="eliminarUsuario(' . $data[$i]['id'] . ')"><i class="fas fa-times-circle"></i></button>
+            <button class="btn btn-info" data-bs-toggle="tooltip" title="Editar Registro" type="button" onclick="editarUsuario(' . $data[$i]['id'] . ')"><i class="fas fa-edit"></i></button>
             </div>';
         }
         echo json_encode($data, JSON_UNESCAPED_UNICODE);
@@ -148,7 +148,7 @@ class Usuarios extends Controller
     public function inactivos()
     {
         $data['title'] = 'Usuarios Inactivos';
-        $data['script'] = 'usuarios-inactivos.js';
+        $data['script'] = 'usuarios_inactivos.js';
         $this->views->getView('usuarios', 'inactivos', $data);
     }
     public function listarInactivos()
@@ -161,7 +161,7 @@ class Usuarios extends Controller
                 $data[$i]['rol'] = '<span class="badge bg-info">VENDEDOR</span>';
             }
             $data[$i]['acciones'] = '<div>
-            <button class="btn btn-danger" type="button" onclick="restaurarUsuario(' . $data[$i]['id'] . ')"><i class="fas fa-check-circle"></i></button>
+            <button class="btn btn-danger" data-bs-toggle="tooltip" title="Restaurar Registro" type="button" onclick="restaurarUsuario(' . $data[$i]['id'] . ')"><i class="fas fa-check-circle"></i></button>
             </div>';
         }
         echo json_encode($data, JSON_UNESCAPED_UNICODE);
