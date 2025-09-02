@@ -31,6 +31,7 @@
     <!-- Template Stylesheet -->
     <link href="<?php echo BASE_URL; ?>assets/css/style.css" rel="stylesheet">
     <link href="<?php echo BASE_URL; ?>assets/css/tablas.css" rel="stylesheet">
+    <link href="<?php echo BASE_URL; ?>assets/css/plugins/notiflix-3.2.6.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -61,14 +62,16 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="<?php echo BASE_URL . 'admin'; ?>" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    
+                    <!-- ADMINISTRACION -->
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle small-text" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Administración</a>
                         <div class="me-2 dropdown-menu bg-transparent border-0">
                             <a href="<?php echo BASE_URL . 'usuarios'; ?>" class="dropdown-item">
                                 <i class="fa fa-users me-2"></i> Usuarios
                             </a>
-                            <a href="<?php echo BASE_URL . 'admin'; ?>" class="dropdown-item">
+                            <a href="<?php echo BASE_URL . 'admin/datos'; ?>" class="dropdown-item">
                                 <i class="fa fa-cog me-2"></i> Configuración
                             </a>                           
                         </div>
@@ -188,3 +191,4 @@
                 </div>
             </nav>
             <!-- Navbar End -->
+             

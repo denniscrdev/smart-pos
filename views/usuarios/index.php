@@ -4,11 +4,12 @@
     <div class="row">
         <div class="col-12">
             <div class="card bg-secondary text-white">
-                <div class="card-header text-center">
-                    <h3 class="py-2"><i class="fa fa-users me-2"></i>Usuarios</h3>
+                <div class="card-header mb-2 text-center">
+                    <h3 class="user"><i class="fa fa-users me-2"></i>Usuarios</h3>
+                    <hr class="linea-negra">
                 </div>
-                <div class="card-body py-1">
-                    <div class="text-end ">
+                <div class="card-body">
+                    <div class="text-end">
                         <a href="<?php echo BASE_URL . 'usuarios/inactivos'; ?>"><i class="fas fa-trash text-danger me-2"></i>Usuarios Inactivos</a>
                     </div>
                     <div class="h-100 bg-secondary rounded">
